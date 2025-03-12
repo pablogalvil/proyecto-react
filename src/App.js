@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import CategoryBar from "./components/CategoryBar";
@@ -6,9 +6,16 @@ import TaskCalendar from "./components/TaskCalendar"; // Importamos el nuevo com
 import "./App.css";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
   const [categories] = useState(["Trabajo", "Estudio", "Personal"]); // Lista de categorías
   const [selectedCategory, setSelectedCategory] = useState("all"); // Categoría seleccionada
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = (task, category, date) => {
     setTasks([...tasks, { id: Date.now(), text: task, completed: false, category, date }]);
