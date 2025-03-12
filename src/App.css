@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-
+/* Estilo de la sección de tareas */
 .div-tareas {
   background-color: #282c34;
   min-height: 100vh;
@@ -27,7 +27,58 @@
   color: #61dafb;
 }
 
-.btn-add{
+/* Contenedor principal para dividir las tareas y el calendario */
+.app-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Sección de Tareas (Izquierda) */
+.task-section {
+  width: 60%;
+}
+
+/* Sección del Calendario (Derecha) */
+.calendar-section {
+  width: 35%;
+  padding: 20px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el calendario */
+.react-calendar {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+}
+
+/* Resaltar los días con tareas */
+.highlight {
+  background-color: #ffcc00 !important;
+  border-radius: 50%;
+}
+
+/* Lista de tareas en el calendario */
+.task-list {
+  margin-top: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  color: black;
+}
+
+/* Botones de acción */
+.btn-add {
   margin-left: 24px;
   background-color: #00b418;
   color: rgb(255, 255, 255);
@@ -38,7 +89,7 @@
   cursor: pointer;
 }
 
-.btn-edit{
+.btn-edit {
   margin-left: 8px;
   background-color: #2863a7;
   color: rgb(255, 255, 255);
@@ -49,7 +100,7 @@
   cursor: pointer;
 }
 
-.btn-delete{
+.btn-delete {
   margin-left: 8px;
   background-color: #d70000;
   color: rgb(255, 255, 255);
@@ -60,9 +111,69 @@
   cursor: pointer;
 }
 
-.text-input{
+/* Input de texto */
+.text-input {
   padding: 10px 20px;
   border-radius: 6px;
   font-weight: bold;
   border: none;
+}
+
+/* Formulario de tareas */
+.task-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Select y date input */
+.task-select, .task-date {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  outline: none;
+  background: white;
+}
+
+/* Botón de tareas */
+.task-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.task-btn:hover {
+  background: #218838;
+}
+
+/* Barra de categorías */
+.category-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.category-btn {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.category-btn:hover {
+  background: #666;
+}
+
+.category-btn.active {
+  background: #007bff;
+  color: white;
 }
