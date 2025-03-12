@@ -24,7 +24,7 @@ function App() {
       completed: false, 
       category, 
       date, 
-      email: "elreydelabice@gmail.com"  // O usa un estado para manejar el email del usuario
+      email: process.env.EMAIL_USER
     };
   
     setTasks([...tasks, newTask]);
