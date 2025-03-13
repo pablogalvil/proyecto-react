@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 const TaskCalendar = ({ tasks }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [animateCalendar, setAnimateCalendar] = useState(false); // Estado para animación
 
-  // Filtrar tareas por la fecha seleccionada
+  useEffect(() => {
+    setTimeout(() => {
+      setAnimateCalendar(true);
+    }, 100);
+  }, []);
+
   const tasksForDate = tasks.filter(
     (task) => task.date === selectedDate.toISOString().split("T")[0]
   );
 
   return (
-    <div className="calendar-container">
+    <div className={`calendar-container ${animateCalendar ? "animate-calendar" : ""}`}>
       <h2>Calendario</h2>
       <Calendar
         onChange={setSelectedDate}
@@ -20,7 +26,7 @@ const TaskCalendar = ({ tasks }) => {
           tasks.some((task) => task.date === date.toISOString().split("T")[0]) ? "highlight" : ""
         }
       />
-      
+
       <div className="task-list">
         <h3>Tareas para {selectedDate.toDateString()}</h3>
         {tasksForDate.length === 0 ? (
@@ -28,7 +34,9 @@ const TaskCalendar = ({ tasks }) => {
         ) : (
           <ul>
             {tasksForDate.map((task) => (
-              <li key={task.id}>{task.text} ({task.category})</li>
+              <li key={task.id}>
+                {task.text} ({task.category})
+              </li>
             ))}
           </ul>
         )}

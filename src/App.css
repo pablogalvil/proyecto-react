@@ -146,6 +146,7 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s;
+  margin-left: 10px;
 }
 
 .task-btn:hover {
@@ -176,4 +177,194 @@
 .category-btn.active {
   background: #007bff;
   color: white;
+}
+
+.task-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.task-form .task-input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.textarea-description {
+  height: 120px; 
+  resize: none; 
+}
+
+.task-select,
+.task-date {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 90%;
+  margin-left: 10px;
+}
+
+.task-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.task-btn:hover {
+  background-color: #218838;
+}
+
+.task-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.form-group-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 150px;
+}
+
+.form-group-right select,
+.form-group-right input,
+.form-group-right button {
+  width: 100%;
+}
+
+.form-group-right select,
+.form-group-right input {
+  box-sizing: border-box;
+}
+
+.calendar-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-calendar {
+  animation: slideFromRight 0.7s ease-out;
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* --- Ajuste general modo oscuro --- */
+
+/* Fondo oscuro en todo el body al activar dark-mode */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* Aseguramos que no haya color de fondo blanco en contenedores */
+.dark-mode .app-container,
+.dark-mode .task-section,
+.dark-mode .calendar-section {
+  background-color: transparent !important;
+}
+
+/* Color del título claramente visible */
+.dark-mode .task-section h1 {
+  color: #ffffff !important;
+}
+
+/* Textos claramente visibles en modo oscuro */
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode span,
+.dark-mode label {
+  color: #ffffff !important;
+}
+
+/* Fondo claro predeterminado (modo claro) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Calendario en modo oscuro */
+.dark-mode .calendar-section,
+.dark-mode .react-calendar {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+/* Botones de categoría modo oscuro */
+.dark-mode .category-btn {
+  background-color: #3b3b3b !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .category-btn.active {
+  background-color: #005bb5 !important;
+  color: #ffffff !important;
+}
+
+/* Inputs y Textarea modo oscuro */
+.dark-mode .task-input,
+.dark-mode .textarea-description,
+.dark-mode .task-select,
+.dark-mode .task-date {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+/* Botones formulario (añadir tarea) modo oscuro */
+.dark-mode .task-btn {
+  background-color: #0e7a2e !important;
+}
+
+.dark-mode .task-btn:hover {
+  background-color: #095c20 !important;
+}
+
+.darkmode-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  z-index: 1000;
+  padding: 0; /* Añade esto */
+  margin: 0;  /* Añade esto */
+}
+
+.darkmode-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Texto claramente visible en modo oscuro debajo del calendario */
+.dark-mode .calendar-section .task-list {
+  background-color: #252525 !important; 
+  color: #ffffff !important;
+}
+
+.dark-mode .calendar-section .task-list h3,
+.dark-mode .calendar-section .task-list p,
+.dark-mode .calendar-section .task-list li {
+  color: #ffffff !important;
 }

@@ -1,55 +1,74 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import successSound from "../assets/success.wav"; // Importa tu archivo de sonido
 
 const TaskForm = ({ addTask, categories }) => {
   const [task, setTask] = useState("");
-  const [category, setCategory] = useState(categories[0]); // Primera categoría por defecto
-  const [date, setDate] = useState(""); // Estado para la fecha
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState(categories[0]);
+  const [date, setDate] = useState("");
+  
+  // Referencia para el sonido
+  const audioRef = useRef(new Audio(successSound));
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim() && date) {
-      // Convertimos la fecha a formato local (YYYY-MM-DD)
       const localDate = new Date(date);
       localDate.setMinutes(localDate.getMinutes() + localDate.getTimezoneOffset());
 
-      addTask(task, category, localDate.toISOString().split("T")[0]); // Guardamos en formato local
+      addTask(task, description, category, localDate.toISOString().split("T")[0]);
       setTask("");
+      setDescription("");
       setDate("");
+
+      // Reproducir sonido al añadir tarea
+      audioRef.current.play();
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="task-form">
-      <input
-        type="text"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        className="task-input"
-        placeholder="Nueva tarea"
-      />
+      <div className="form-left">
+        <input
+          type="text"
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          className="task-input"
+          placeholder="Nueva tarea"
+        />
 
-      <select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        className="task-select"
-      >
-        {categories.map((cat) => (
-          <option key={cat} value={cat}>
-            {cat}
-          </option>
-        ))}
-      </select>
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="task-input textarea-description"
+          placeholder="Descripción (opcional)"
+        />
+      </div>
 
-      <input
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        className="task-date"
-      />
+      <div className="form-right">
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="task-select"
+        >
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
 
-      <button type="submit" className="task-btn">
-        Añadir
-      </button>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className="task-date"
+        />
+
+        <button type="submit" className="task-btn">
+          Añadir
+        </button>
+      </div>
     </form>
   );
 };
