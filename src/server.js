@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cron = require("node-cron");
@@ -17,6 +18,14 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+});
+
+transporter.verify((error, success) => {
+  if (error) {
+    console.log("Error con SMTP:", error);
+  } else {
+    console.log("Servidor SMTP listo para enviar correos");
+  }
 });
 
 // Ruta para agregar una tarea y enviar correo inmediatamente

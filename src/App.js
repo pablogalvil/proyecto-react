@@ -29,7 +29,7 @@ function App() {
       completed: false, 
       category, 
       date, 
-      email: process.env.EMAIL_USER
+      email: prompt("Ingresa tu correo:")
     };
   
     setTasks([...tasks, newTask]);
