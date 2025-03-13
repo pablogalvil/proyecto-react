@@ -22,6 +22,7 @@ function App() {
   }, [tasks]);
 
   const addTask = async (task, description, category, date) => {
+    let correo = prompt("Ingresa tu correo:");
     const newTask = { 
       id: Date.now(), 
       text: task,
@@ -29,7 +30,7 @@ function App() {
       completed: false, 
       category, 
       date, 
-      email: prompt("Ingresa tu correo:")
+      email: correo
     };
   
     setTasks([...tasks, newTask]);
