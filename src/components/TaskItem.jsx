@@ -6,7 +6,7 @@ const TaskItem = ({ task, deleteTask, editTask, toggleComplete }) => {
   const [newText, setNewText] = useState(task.text);
   const [newDescription, setNewDescription] = useState(task.description || "");
 
-  // Una sola referencia para el audio
+  //Una sola referencia para el audio
   const audioRef = useRef(new Audio(deleteSound));
 
   const handleEdit = () => {
@@ -14,6 +14,7 @@ const TaskItem = ({ task, deleteTask, editTask, toggleComplete }) => {
     setIsEditing(false);
   };
 
+  //Poner el audio en de eliminar
   const handleDelete = () => {
     deleteTask(task.id);
     audioRef.current.play();

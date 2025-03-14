@@ -250,9 +250,9 @@
 }
 
 .animate-calendar {
-  animation: slideFromRight 0.7s ease-out;
+  animation: slideFromRight 1.0s ease-out;
 }
-
+/* Animación de entrada desde la derecha */
 @keyframes slideFromRight {
   from {
     opacity: 0;
@@ -347,8 +347,8 @@ body {
   width: 40px;
   height: 40px;
   z-index: 1000;
-  padding: 0; /* Añade esto */
-  margin: 0;  /* Añade esto */
+  padding: 0; 
+  margin: 0; 
 }
 
 .darkmode-btn img {
@@ -357,7 +357,7 @@ body {
   object-fit: contain;
 }
 
-/* Texto claramente visible en modo oscuro debajo del calendario */
+/*Poner visible en modo oscuro debajo del calendario */
 .dark-mode .calendar-section .task-list {
   background-color: #252525 !important; 
   color: #ffffff !important;

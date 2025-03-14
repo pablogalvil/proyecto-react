@@ -1,5 +1,6 @@
+//Importamos los sonidos
 import { useState, useRef } from "react";
-import successSound from "../assets/success.wav"; // Importa tu archivo de sonido
+import successSound from "../assets/success.wav";
 
 const TaskForm = ({ addTask, categories }) => {
   const [task, setTask] = useState("");
@@ -37,6 +38,7 @@ const TaskForm = ({ addTask, categories }) => {
           placeholder="Nueva tarea"
         />
 
+        {/* Textarea para la descripción */}
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}

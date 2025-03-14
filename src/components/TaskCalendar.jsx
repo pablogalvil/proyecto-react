@@ -4,7 +4,8 @@ import "react-calendar/dist/Calendar.css";
 
 const TaskCalendar = ({ tasks }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [animateCalendar, setAnimateCalendar] = useState(false); // Estado para animación
+  //Estado para animación
+  const [animateCalendar, setAnimateCalendar] = useState(false); 
 
   useEffect(() => {
     setTimeout(() => {

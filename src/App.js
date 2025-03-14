@@ -63,7 +63,7 @@ function App() {
 
   const filteredTasks = selectedCategory === "all" ? tasks : tasks.filter((task) => task.category === selectedCategory);
 
-  // Este useEffect soluciona correctamente tu problema del modo oscuro
+  //Cambiar el color de fondo del body
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark-mode');
@@ -71,7 +71,7 @@ function App() {
       document.body.classList.remove('dark-mode');
     }
 
-    // Limpiar la clase al desmontar
+    //Limpiar la clase al desmontar
     return () => document.body.classList.remove('dark-mode');
   }, [darkMode]);
 
